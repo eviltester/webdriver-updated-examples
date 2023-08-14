@@ -1,0 +1,122 @@
+package a010_how_abstractions_help;
+
+import a010_how_abstractions_help.abstractions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class HowAbstractionsHelpTest {
+
+    private WebDriver driver;
+
+    @BeforeEach
+    public void setupData(){
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void noAbstractions(){
+        driver.get("https://testpages.herokuapp.com/styled/apps/notes/simplenotes.html");
+
+        final WebElement titleField =
+                driver.findElement(
+                        By.cssSelector("#note-title-input"));
+
+        titleField.sendKeys("My basic note");
+
+        final WebElement noteField =
+                driver.findElement(
+                        By.cssSelector("#note-details-input"));
+
+        noteField.sendKeys("Details of basic note");
+
+        final WebElement addButton = driver.findElement(By.id("add-note"));
+        addButton.click();
+
+        // This might be intermittent without the wait
+        // but the JS is probably fast enough to work
+//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+//                ExpectedConditions.numberOfElementsToBe(
+//                        By.cssSelector("span.title-note-in-list"),1)
+//        );
+
+        Assertions.assertEquals("My basic note",
+                driver.findElement(
+                        By.cssSelector("span.title-note-in-list")).getText().trim());
+    }
+
+
+    @Test
+    public void canCreateANoteUsingPageObjects(){
+
+        driver.get(NotesAppSite.getNotesAppUrl());
+
+        NotesPage notespage = new NotesPage(driver);
+        notespage.enterNote("My page note", "Contents of my note");
+
+        // This might be intermittent without the wait
+        // but the JS is probably fast enough to work
+//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+//                ExpectedConditions.numberOfElementsToBe(
+//                        NotesPage.NOTES_LIST_ITEM,1)
+//        );
+
+        Assertions.assertEquals("My page note",
+                driver.findElement(
+                        NotesPage.NOTES_LIST_ITEM).getText().trim());
+    }
+
+    @Test
+    public void canCreateANote(){
+
+        NotesAppNavigator navigate = new NotesAppNavigator(driver);
+        NotesPage notespage = navigate.to().notesPage();
+
+        notespage.enterNote(
+                "My navigated note",
+                "Contents of my note");
+
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                (driver) -> {
+                    return notespage.isNoteVisible("My navigated note");
+                }
+        );
+    }
+
+    @Test
+    public void aUserCanCreateANote(){
+        NotesAppUser user = new NotesAppUser(driver);
+        user.
+            visitsNotePage().and().
+            createsANote("My user note", "Contents of my note");
+
+        new FluentWait<NotesAppUser>(user).until(
+                (aUser) -> {  return
+                        aUser.canSeeNote("My user note"); });
+    }
+
+    @Test
+    public void aUserCanCreateARandomNote(){
+        NotesAppUser user = new NotesAppUser(driver);
+
+        UserNote aNote = user.
+                visitsNotePage().and().
+                createsARandomNote();
+
+        user.waitsUntilCanSeeNote(aNote);
+    }
+
+    @AfterEach
+    public void closeBrowser(){
+        driver.close();
+    }
+}
