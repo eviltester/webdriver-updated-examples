@@ -83,9 +83,7 @@ public class HowAbstractionsHelpTest {
                 "Contents of my note");
 
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-                (driver) -> {
-                    return notespage.isNoteVisible("My navigated note");
-                }
+                (driver) -> notespage.isNoteVisible("My navigated note")
         );
     }
 
@@ -96,9 +94,8 @@ public class HowAbstractionsHelpTest {
             visitsNotePage().and().
             createsANote("My user note", "Contents of my note");
 
-        new FluentWait<NotesAppUser>(user).until(
-                (aUser) -> {  return
-                        aUser.canSeeNote("My user note"); });
+        new FluentWait<>(user).until(
+                (aUser) -> aUser.canSeeNote("My user note"));
     }
 
     @Test

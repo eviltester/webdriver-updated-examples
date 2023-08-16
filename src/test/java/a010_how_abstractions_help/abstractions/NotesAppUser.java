@@ -39,8 +39,7 @@ public class NotesAppUser {
     }
 
     public void waitsUntilCanSeeNote(final UserNote aNote) {
-        new FluentWait<NotesAppUser>(this).until(
-                (aUser) -> {  return
-                        aUser.canSeeNote(aNote.noteTitle()); });
+        new FluentWait<>(this).until(
+                (aUser) -> aUser.canSeeNote(aNote.noteTitle()));
     }
 }
