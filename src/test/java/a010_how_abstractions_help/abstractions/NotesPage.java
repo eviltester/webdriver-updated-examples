@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class NotesPage {
-    public static final By NOTES_LIST_ITEM = By.cssSelector("span.title-note-in-list");
+    public static final By NOTES_LIST_ITEM = By.cssSelector("p.title-note-in-list");
     private final WebDriver driver;
 
     public NotesPage(final WebDriver driver) {
@@ -36,7 +36,7 @@ public class NotesPage {
     public boolean isNoteVisible(final String noteTitle) {
         List<WebElement> notes = driver.findElements(
                 By.cssSelector(
-                        "span.title-note-in-list"));
+                        "p.title-note-in-list"));
 
         Optional<WebElement> foundNote = notes.stream().
             filter(aNote -> aNote.getText().trim().equals(noteTitle)).

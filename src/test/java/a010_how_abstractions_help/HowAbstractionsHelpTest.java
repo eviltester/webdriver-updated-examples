@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,7 +20,7 @@ public class HowAbstractionsHelpTest {
     private WebDriver driver;
 
     @BeforeEach
-    public void setupData(){
+    public void startBrowser(){
         driver = new ChromeDriver();
     }
 
@@ -42,16 +43,14 @@ public class HowAbstractionsHelpTest {
         final WebElement addButton = driver.findElement(By.id("add-note"));
         addButton.click();
 
-        // This might be intermittent without the wait
-        // but the JS is probably fast enough to work
-//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-//                ExpectedConditions.numberOfElementsToBe(
-//                        By.cssSelector("span.title-note-in-list"),1)
-//        );
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                ExpectedConditions.numberOfElementsToBe(
+                        By.cssSelector("p.title-note-in-list"),1)
+        );
 
         Assertions.assertEquals("My basic note",
                 driver.findElement(
-                        By.cssSelector("span.title-note-in-list")).getText().trim());
+                        By.cssSelector("p.title-note-in-list")).getText().trim());
     }
 
 
@@ -63,12 +62,10 @@ public class HowAbstractionsHelpTest {
         NotesPage notespage = new NotesPage(driver);
         notespage.enterNote("My page note", "Contents of my note");
 
-        // This might be intermittent without the wait
-        // but the JS is probably fast enough to work
-//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-//                ExpectedConditions.numberOfElementsToBe(
-//                        NotesPage.NOTES_LIST_ITEM,1)
-//        );
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                ExpectedConditions.numberOfElementsToBe(
+                        NotesPage.NOTES_LIST_ITEM,1)
+        );
 
         Assertions.assertEquals("My page note",
                 driver.findElement(
