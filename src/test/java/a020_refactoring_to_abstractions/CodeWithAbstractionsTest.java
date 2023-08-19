@@ -47,13 +47,12 @@ public class CodeWithAbstractionsTest {
     }
 
     private List<WebElement> getNoteTitles() {
-        final List<WebElement> listItems = new WebDriverWait(
+        return new WebDriverWait(
                                             driver, Duration.ofSeconds(10)).until(
                 ExpectedConditions.numberOfElementsToBe(
                         By.cssSelector("div.note-in-list > p"), 1
                 )
         );
-        return listItems;
     }
 
     private void clickAddNote() {

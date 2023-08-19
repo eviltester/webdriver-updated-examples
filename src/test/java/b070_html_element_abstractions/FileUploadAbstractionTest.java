@@ -1,8 +1,6 @@
 package b070_html_element_abstractions;
 
 import b070_html_element_abstractions.abstractions.FileInputElement;
-import b070_html_element_abstractions.abstractions.HtmlInputField;
-import b070_html_element_abstractions.abstractions.HtmlTextAreaField;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -67,7 +64,7 @@ public class FileUploadAbstractionTest {
     }
 
     @Test
-    public void missingFileDetectected() throws MalformedURLException {
+    public void missingFileDetectected(){
         final By fileNameInput = new By.ByCssSelector("input[name='filename']");
         final WebElement fileInputElement
                 = driver.findElement(fileNameInput);
@@ -75,9 +72,8 @@ public class FileUploadAbstractionTest {
         final FileInputElement fileInput = new FileInputElement(fileInputElement);
 
 
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            fileInput.chooseFile(new File("textfile.txt"));
-        });
+        RuntimeException thrown = assertThrows(RuntimeException.class, () ->
+                fileInput.chooseFile(new File("textfile.txt")));
 
         assertTrue(thrown.getMessage().startsWith("File does not exist"));
 

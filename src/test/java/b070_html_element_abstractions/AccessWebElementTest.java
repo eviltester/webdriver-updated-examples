@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AccessWebElementTest {
 
@@ -36,23 +36,22 @@ public class AccessWebElementTest {
         WebElement checkboxWebElement = checkbox1.getWrappedElement();
 
         // can check state using attribute or isSelected
-        assertEquals(false, checkboxWebElement.isSelected());
-        assertEquals(false,
-                checkboxWebElement.getAttribute("checked") != null);
+        assertFalse(checkboxWebElement.isSelected());
+        assertNull(checkboxWebElement.getAttribute("checked"));
 
         checkboxWebElement.click();
-        assertEquals(true, checkboxWebElement.isSelected());
+        assertTrue(checkboxWebElement.isSelected());
 
         // focus on the element and use keys to toggle state
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].focus()", checkboxWebElement);
         checkboxWebElement.sendKeys(" ");
-        assertEquals(false, checkboxWebElement.isSelected());
+        assertFalse(checkboxWebElement.isSelected());
 
 
         // set state entirely using JavaScript
         js.executeScript("arguments[0].checked=arguments[1]", checkboxWebElement, true);
-        assertEquals(true, checkboxWebElement.isSelected());
+        assertTrue(checkboxWebElement.isSelected());
 
         // check state entirely using JavaScript
         assertEquals(true,

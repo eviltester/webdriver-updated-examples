@@ -5,14 +5,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CheckboxAbstractionTest {
 
@@ -31,15 +30,15 @@ public class CheckboxAbstractionTest {
 
         final WebElement aCheckbox = driver.findElement(checkboxes);
 
-        assertEquals(false, aCheckbox.isSelected());
+        assertFalse(aCheckbox.isSelected());
 
         aCheckbox.click();
 
-        assertEquals(true, aCheckbox.isSelected());
+        assertTrue(aCheckbox.isSelected());
 
         aCheckbox.click();
 
-        assertEquals(false, aCheckbox.isSelected());
+        assertFalse(aCheckbox.isSelected());
 
     }
 
@@ -52,19 +51,19 @@ public class CheckboxAbstractionTest {
 
         final HtmlCheckbox checkbox = new HtmlCheckbox(aCheckbox);
 
-        assertEquals(false, checkbox.isChecked());
+        assertFalse(checkbox.isChecked());
 
         checkbox.check();
 
-        assertEquals(true, checkbox.isChecked());
+        assertTrue(checkbox.isChecked());
 
         checkbox.uncheck();
 
-        assertEquals(false, checkbox.isChecked());
+        assertFalse(checkbox.isChecked());
 
         checkbox.toggle();
 
-        assertEquals(true, checkbox.isChecked());
+        assertTrue(checkbox.isChecked());
     }
 
 
@@ -80,9 +79,9 @@ public class CheckboxAbstractionTest {
         HtmlCheckbox checkbox3 = new HtmlCheckbox(theCheckboxElements.get(2));
 
         // check the default checkbox states
-        assertEquals(false, checkbox1.isChecked());
-        assertEquals(false, checkbox2.isChecked());
-        assertEquals(true, checkbox3.isChecked());
+        assertFalse(checkbox1.isChecked());
+        assertFalse(checkbox2.isChecked());
+        assertTrue(checkbox3.isChecked());
 
 
         checkbox1.toggle();
@@ -90,27 +89,27 @@ public class CheckboxAbstractionTest {
         checkbox3.toggle();
 
         // check the default checkbox states
-        assertEquals(true, checkbox1.isChecked());
-        assertEquals(true, checkbox2.isChecked());
-        assertEquals(false, checkbox3.isChecked());
+        assertTrue(checkbox1.isChecked());
+        assertTrue(checkbox2.isChecked());
+        assertFalse(checkbox3.isChecked());
 
         checkbox1.uncheck();
         checkbox2.uncheck();
         checkbox3.uncheck();
 
         // check the default checkbox states
-        assertEquals(false, checkbox1.isChecked());
-        assertEquals(false, checkbox2.isChecked());
-        assertEquals(false, checkbox3.isChecked());
+        assertFalse(checkbox1.isChecked());
+        assertFalse(checkbox2.isChecked());
+        assertFalse(checkbox3.isChecked());
 
         checkbox1.check();
         checkbox2.check();
         checkbox3.check();
 
         // check the default checkbox states
-        assertEquals(true, checkbox1.isChecked());
-        assertEquals(true, checkbox2.isChecked());
-        assertEquals(true, checkbox3.isChecked());
+        assertTrue(checkbox1.isChecked());
+        assertTrue(checkbox2.isChecked());
+        assertTrue(checkbox3.isChecked());
     }
 
     @AfterEach

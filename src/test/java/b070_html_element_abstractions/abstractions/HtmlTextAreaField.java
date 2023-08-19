@@ -15,7 +15,7 @@ public class HtmlTextAreaField extends HtmlInputField{
 
         String linePrefix = "\n";
 
-        if(value()==""){
+        if(value().equals("")){
             linePrefix="";
         }
 
