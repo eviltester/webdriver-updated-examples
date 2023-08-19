@@ -1,7 +1,6 @@
-package a20_refactoring_to_abstractions;
+package a020_refactoring_to_abstractions;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -13,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CodeWithAbstractionsTest {
 
@@ -40,7 +41,7 @@ public class CodeWithAbstractionsTest {
         Optional<WebElement> foundElem = listItems.stream().filter(
                             elem -> elem.getText().equals(myNoteTitle)).findFirst();
 
-        Assertions.assertTrue(foundElem.isPresent(),
+        assertTrue(foundElem.isPresent(),
                 "Could not find note in the list");
 
     }

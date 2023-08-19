@@ -2,7 +2,6 @@ package a010_how_abstractions_help;
 
 import a010_how_abstractions_help.abstractions.*;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -14,6 +13,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HowAbstractionsHelpTest {
 
@@ -48,7 +49,7 @@ public class HowAbstractionsHelpTest {
                         By.cssSelector("p.title-note-in-list"),1)
         );
 
-        Assertions.assertEquals("My basic note",
+        assertEquals("My basic note",
                 driver.findElement(
                         By.cssSelector("p.title-note-in-list")).getText().trim());
     }
@@ -67,7 +68,7 @@ public class HowAbstractionsHelpTest {
                         NotesPage.NOTES_LIST_ITEM,1)
         );
 
-        Assertions.assertEquals("My page note",
+        assertEquals("My page note",
                 driver.findElement(
                         NotesPage.NOTES_LIST_ITEM).getText().trim());
     }
