@@ -27,7 +27,7 @@ public class AccessWebElementTest {
     @Test
     public void canContinueToUseWebElementSemantics() {
 
-        final By checkboxes = new By.ByCssSelector("input[type='checkbox']");
+        final By checkboxes = By.cssSelector("input[type='checkbox']");
 
         final List<WebElement> theCheckboxElements = driver.findElements(checkboxes);
 

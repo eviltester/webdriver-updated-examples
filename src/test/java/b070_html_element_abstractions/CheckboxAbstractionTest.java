@@ -26,7 +26,7 @@ public class CheckboxAbstractionTest {
     @Test
     public void canInteractWithACheckBoxAsWebElement(){
 
-        final By checkboxes = new By.ByCssSelector("input[type='checkbox']");
+        final By checkboxes = By.cssSelector("input[type='checkbox']");
 
         final WebElement aCheckbox = driver.findElement(checkboxes);
 
@@ -45,7 +45,7 @@ public class CheckboxAbstractionTest {
     @Test
     public void canInteractWithACheckBoxSemantically(){
 
-        final By checkboxes = new By.ByCssSelector("input[type='checkbox']");
+        final By checkboxes = By.cssSelector("input[type='checkbox']");
 
         final WebElement aCheckbox = driver.findElement(checkboxes);
 
@@ -70,7 +70,7 @@ public class CheckboxAbstractionTest {
     @Test
     public void canInteractWithCheckBoxSemantics(){
 
-        final By checkboxes = new By.ByCssSelector("input[type='checkbox']");
+        final By checkboxes = By.cssSelector("input[type='checkbox']");
 
         final List<WebElement> theCheckboxElements = driver.findElements(checkboxes);
 

@@ -28,7 +28,7 @@ public class FileUploadAbstractionTest {
 
     @Test
     public void canInteractWithFileInputAsWebElement() throws URISyntaxException {
-        final By fileNameInput = new By.ByCssSelector("input[name='filename']");
+        final By fileNameInput = By.cssSelector("input[name='filename']");
         final WebElement fileInputElement
                 = driver.findElement(fileNameInput);
 
@@ -45,7 +45,7 @@ public class FileUploadAbstractionTest {
 
     @Test
     public void canInteractWithFileInputSemantically() throws URISyntaxException {
-        final By fileNameInput = new By.ByCssSelector("input[name='filename']");
+        final By fileNameInput = By.cssSelector("input[name='filename']");
         final WebElement fileInputElement
                 = driver.findElement(fileNameInput);
 
@@ -65,7 +65,7 @@ public class FileUploadAbstractionTest {
 
     @Test
     public void missingFileDetectected(){
-        final By fileNameInput = new By.ByCssSelector("input[name='filename']");
+        final By fileNameInput = By.cssSelector("input[name='filename']");
         final WebElement fileInputElement
                 = driver.findElement(fileNameInput);
 
@@ -83,7 +83,7 @@ public class FileUploadAbstractionTest {
 
     @Test
     public void canSubmitFormWithFile() throws URISyntaxException {
-        final By fileNameInput = new By.ByCssSelector("input[name='filename']");
+        final By fileNameInput = By.cssSelector("input[name='filename']");
         final WebElement fileInputElement
                 = driver.findElement(fileNameInput);
 

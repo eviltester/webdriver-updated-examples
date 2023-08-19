@@ -24,7 +24,7 @@ public class TextAreaAbstractionTest {
 
     @Test
     public void canInteractWithAnTextAreaAsWebElement(){
-        final By commentsTextArea = new By.ByCssSelector("textarea[name='comments']");
+        final By commentsTextArea = By.cssSelector("textarea[name='comments']");
         final WebElement textAreaElement
                 = driver.findElement(commentsTextArea);
 
@@ -45,7 +45,7 @@ public class TextAreaAbstractionTest {
     @Test
     public void textAreaSharesSameSemantics(){
 
-        final By commentsTextArea = new By.ByCssSelector("textarea[name='comments']");
+        final By commentsTextArea = By.cssSelector("textarea[name='comments']");
         final WebElement textAreaElement = driver.findElement(commentsTextArea);
 
         final HtmlInputField textArea = new HtmlInputField(textAreaElement);
@@ -58,7 +58,7 @@ public class TextAreaAbstractionTest {
     @Test
     public void textAreaAsExtensionOfInput(){
 
-        final By commentsTextArea = new By.ByCssSelector("textarea[name='comments']");
+        final By commentsTextArea = By.cssSelector("textarea[name='comments']");
         final WebElement textAreaElement = driver.findElement(commentsTextArea);
 
         final HtmlTextAreaField textArea = new HtmlTextAreaField(textAreaElement);
