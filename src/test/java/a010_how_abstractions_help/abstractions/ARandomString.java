@@ -9,7 +9,7 @@ class ARandomString {
     private final int wordMinLen;
     private final Random rnd;
 
-    String validchars = "abcdefghijklmnopqrtsuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    final String validChars = "abcdefghijklmnopqrtsuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public ARandomString(String separator) {
         this.space = separator;
@@ -33,8 +33,8 @@ class ARandomString {
 
             while (wordLength > 0) {
 
-                int charIndex = rnd.nextInt(validchars.length());
-                char charToAdd = validchars.charAt(charIndex);
+                int charIndex = rnd.nextInt(validChars.length());
+                char charToAdd = validChars.charAt(charIndex);
                 sentence.append(charToAdd);
                 wordLength--;
             }

@@ -1,6 +1,7 @@
 package b070_html_element_abstractions;
 
-import b070_html_element_abstractions.abstractions.HtmlCheckbox;
+import b020_infrastructure_abstractions.abstractions.Environment;
+import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import b070_html_element_abstractions.abstractions.HtmlRadioButton;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,8 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,7 +21,7 @@ public class RadioButtonAbstractionTest {
     @BeforeEach
     public void startBrowser(){
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
+        driver.get(new SiteUrls(new Environment()).htmlForm());
     }
 
     @Test

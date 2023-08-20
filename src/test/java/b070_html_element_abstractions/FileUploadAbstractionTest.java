@@ -1,5 +1,7 @@
 package b070_html_element_abstractions;
 
+import b020_infrastructure_abstractions.abstractions.Environment;
+import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import b070_html_element_abstractions.abstractions.FileInputElement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +25,7 @@ public class FileUploadAbstractionTest {
     @BeforeEach
     public void startBrowser(){
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
+        driver.get(new SiteUrls(new Environment()).htmlForm());
     }
 
     @Test
@@ -64,7 +66,7 @@ public class FileUploadAbstractionTest {
     }
 
     @Test
-    public void missingFileDetectected(){
+    public void missingFileDetected(){
         final By fileNameInput = By.cssSelector("input[name='filename']");
         final WebElement fileInputElement
                 = driver.findElement(fileNameInput);

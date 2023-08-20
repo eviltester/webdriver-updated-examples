@@ -1,7 +1,8 @@
 package b070_html_element_abstractions;
 
+import b020_infrastructure_abstractions.abstractions.Environment;
+import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import b070_html_element_abstractions.abstractions.HtmlMultiSelect;
-import b070_html_element_abstractions.abstractions.HtmlRadioButton;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,11 +24,38 @@ public class MultiSelectAbstractionTest {
     @BeforeEach
     public void startBrowser(){
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
+        driver.get(new SiteUrls(new Environment()).htmlForm());
     }
 
     @Test
-    public void canInteractWithARadioButtonAsWebElement(){
+    public void canInteractWithAMultiSelectAsWebElement() {
+
+        final By multiSelect = By.cssSelector("select[name='multipleselect[]']");
+
+        final WebElement multiSelectElement = driver.findElement(multiSelect);
+        final List<WebElement> options =
+                                    multiSelectElement.
+                                        findElements(By.tagName("option"));
+
+        assertFalse(options.get(0).isSelected());
+        assertFalse(options.get(1).isSelected());
+        assertFalse(options.get(2).isSelected());
+        assertTrue(options.get(3).isSelected());
+
+        // click works slightly different for multi select
+        // than the manual click semantics
+        // manual single click only selects that one item and clears others
+        // WebDriver click is a ctrl+click, alt+click to select multiple
+        options.get(0).click();
+        assertTrue(options.get(0).isSelected());
+        assertFalse(options.get(1).isSelected());
+        assertFalse(options.get(2).isSelected());
+        assertTrue(options.get(3).isSelected());
+
+    }
+
+        @Test
+    public void canInteractWithAMultiSelectSemantically(){
 
         final By multiSelect = By.cssSelector("select[name='multipleselect[]']");
 
@@ -61,36 +92,6 @@ public class MultiSelectAbstractionTest {
         assertTrue(multi.option(2).isSelected());
         assertTrue(multi.option(3).isSelected());
 
-//
-//        // click works slightly different for multi select
-//        // it doesn't clear those that are selected
-//        radioButtonElements.get(0).click();
-//
-//        assertTrue(radioButtonElements.get(0).isSelected());
-//        assertTrue(radioButtonElements.get(3).isSelected());
-//
-//        radioButtonElements.get(3).click();
-//
-//        assertTrue(radioButtonElements.get(0).isSelected());
-//        assertFalse(radioButtonElements.get(1).isSelected());
-//        assertFalse(radioButtonElements.get(2).isSelected());
-//        assertFalse(radioButtonElements.get(3).isSelected());
-
-    }
-
-    @Test
-    public void canInteractWithARadioButtonSemantically(){
-
-        final By radioButtons = By.cssSelector("select[name='multipleselect[]'] > option");
-        final WebElement aRadioButton = driver.findElement(radioButtons);
-
-        final HtmlRadioButton radio = new HtmlRadioButton(aRadioButton);
-
-        assertFalse(radio.isChecked());
-
-        radio.check();
-
-        assertTrue(radio.isChecked());
     }
 
     @AfterEach

@@ -1,5 +1,7 @@
 package b070_html_element_abstractions;
 
+import b020_infrastructure_abstractions.abstractions.Environment;
+import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import b070_html_element_abstractions.abstractions.HtmlCheckbox;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +22,7 @@ public class CheckboxAbstractionTest {
     @BeforeEach
     public void startBrowser(){
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
+        driver.get(new SiteUrls(new Environment()).htmlForm());
     }
 
     @Test
