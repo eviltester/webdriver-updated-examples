@@ -14,6 +14,8 @@
 - Element Abstractions
     - HTML
 - Component Abstractions
+    - logical
+    - structural
 - Page Objects
     - Structural
     - Locator
