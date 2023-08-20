@@ -11,4 +11,8 @@ public class SiteUrls {
     public String htmlForm(){
         return env.getEnvRootUrlDomain() + "/styled/basic-html-form-test.html";
     }
+
+    public String simpleNotesApp() {
+        return env.getEnvRootUrlDomain() + "/styled/apps/notes/simplenotes.html";
+    }
 }

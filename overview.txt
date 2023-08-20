@@ -1,0 +1,31 @@
+- WebDriver Overview
+    - Core WebDriver Abstractions
+        - Driver
+        - WebElement
+        - Synchronization - WebDriverWait + FluentWait
+- Abstraction Overview
+    - What are abstractions?
+    - How do abstractions help?
+    - Refactor to Abstractions
+- Basics
+    - Infrastructure
+        - Environment
+        - Site Urls
+- Element Abstractions
+    - HTML
+- Component Abstractions
+- Page Objects
+    - Structural
+    - Locator
+    - Functional
+    - Annotation Factory Based (shown to avoid)
+- Navigation Abstractions
+- Fluent Abstractions
+- Data Abstractions
+- Domain Abstractions
+- Execution Abstractions
+- DSLs
+- WebDriver Provided Abstractions
+    - Technology
+        - Storage
+        - Cookies
