@@ -41,6 +41,24 @@ public class BasicSyncTest {
     }
 
     @Test
+    public void noSynchronizationRequiredForPageLoad(){
+
+        // No synchronization is required for any elements
+        // that are ready at page load. WebDriver automatically
+        // waits for the page load.
+
+        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page?number-entry=1234");
+        WebElement elem = driver.findElement(By.id("message"));
+        assertEquals("one, two, three, four", elem.getText());
+
+        driver.findElement(By.id("clickable-link")).click();
+
+        WebElement elemAfterPageLoad = driver.findElement(By.id("message"));
+        assertEquals("one, two, three, four, five, six, seven, eight, nine",
+                elemAfterPageLoad.getText());
+    }
+
+    @Test
     public void webDriverWaitUsingExpectedConditions(){
 
         showAsParaWithInputText("123456");
