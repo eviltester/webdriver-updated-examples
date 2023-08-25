@@ -8,10 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.time.Clock;
 import java.time.Duration;
-
+import java.time.Instant;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BasicSyncTest {
@@ -124,6 +125,32 @@ public class BasicSyncTest {
         WebElement elem = driver.findElement(By.id("message"));
         assertEquals("013454", elem.getAttribute("data-vals"));
 
+    }
+
+    @Test
+    public void fluentWaitIsAGenericWaitingAbstraction() {
+
+        // WebDriverWait is built on FluentWait which is a
+        // generic abstraction. We can wait for anything.
+
+        final Instant initialTime = Clock.systemDefaultZone().instant();
+
+        // wait 3 seconds
+        new FluentWait<>(Clock.systemDefaultZone()).
+            withTimeout(Duration.ofSeconds(5)).
+                pollingEvery(Duration.ofMillis(100)).
+                    until(
+                        clock ->
+                            clock.instant().isAfter(initialTime.plusSeconds(3))
+        );
+
+        final Instant afterWaitingTime = Clock.systemDefaultZone().instant();
+        final Long diff = Duration.between(initialTime, afterWaitingTime).getSeconds();
+
+        assertEquals(3L, diff);
+
+        // More generally we would use a library like Awaitility to do this
+        // http://www.awaitility.org/
     }
 
     @AfterEach
