@@ -26,6 +26,21 @@ public class BasicJunitTest {
     public void testMethodsAreAnnotatedWithTest() {
         testCount++;
 
+        // Given
+        int num1 = 1;
+
+        // When
+        int num2 = num1 + num1;
+
+        // Then
+        assertEquals(2, num2,
+                "expected 1+1 to equal 2");
+    }
+
+    @Test
+    public void basicAssertionsOnTrueFalse() {
+        testCount++;
+
         // Junit assertions can be used as static methods
         Assertions.assertTrue(1+1==2);
 
