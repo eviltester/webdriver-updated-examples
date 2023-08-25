@@ -13,8 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BasicWebDriverTest {
 
@@ -25,11 +24,12 @@ public class BasicWebDriverTest {
         // start browser before each test is slower than doing it once per test
         // but means we don't have to do as much clean up after the test
         driver = new ChromeDriver();
+        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
     }
 
     @Test
     public void aBasicWebDriverTest() {
-        // open a URL in the browser
+        // open a URL in the browser - we often just do this in the @BeforeAll or @BeforeEach
         driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
 
         // find elements on the page using By locators
@@ -37,15 +37,32 @@ public class BasicWebDriverTest {
 
         // get the text of a web element
         assertEquals("A paragraph of text", p1.getText());
+    }
 
-        // we can get the attributes on an element
-        assertEquals("main", p1.getAttribute("class"));
-        assertEquals("para1", p1.getAttribute("id"));
-        assertEquals("para1", p1.getAttribute("data-locator"));
+    @Test
+    public void driverLevelInterrogation() {
 
-        // we can find an element and then get child elements
+        String pageTitle = driver.getTitle();
+        assertEquals("Example Page Title", pageTitle);
+
+        String currentUrl = driver.getCurrentUrl();
+        assertEquals(
+            "https://testpages.herokuapp.com/styled/webdriver-example-page",
+                currentUrl);
+
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Example Page Heading One"));
+
+        // explore the additional 'get' methods on driver
+    }
+
+    @Test
+    public void findingElementsOnThePage() {
+
+        // find from the page level with driver
         WebElement mainDetails = driver.findElement(By.id("main-example-paras"));
 
+        // we can find an element and then find child elements
         WebElement firstPara = mainDetails.findElement(By.tagName("p"));
 
         // when multiple elements match the locator the first is returned
@@ -60,23 +77,89 @@ public class BasicWebDriverTest {
     }
 
     @Test
-    public void driverLevelInterrogation() {
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
+    public void locatorStrategiesUsingBy() {
 
-        String pageTitle = driver.getTitle();
-        assertEquals("Example Page Title", pageTitle);
+        // we use By. items to implement different locator strategies
 
-        String currentUrl = driver.getCurrentUrl();
-        assertEquals(
-            "https://testpages.herokuapp.com/styled/webdriver-example-page",
-                currentUrl);
+        // By.id()
+        WebElement paraById = driver.findElement(By.id("para1"));
+        assertEquals("A paragraph of text", paraById.getText());
 
+        // By.className()
+        WebElement paraByClass = driver.findElement(By.className("main"));
+        assertEquals("A paragraph of text", paraByClass.getText());
 
-        String pageSource = driver.getPageSource();
-        assertTrue(pageSource.contains("Example Page Heading One"));
+        // By.linkText()
+        WebElement linkByText = driver.findElement(By.linkText("Show From Link"));
+        assertEquals("clickable-link", linkByText.getAttribute("id"));
+
+        // By.name()
+        WebElement numberentry = driver.findElement(By.name("number-entry"));
+        assertEquals("numentry", numberentry.getAttribute("id"));
+
+        // By.partialLinkText()
+        WebElement partLinkText = driver.findElement(By.partialLinkText("From Link"));
+        assertEquals("clickable-link", partLinkText.getAttribute("id"));
+
+        // By.tagName()
+        WebElement tagElem = driver.findElement(By.tagName("li"));
+        assertEquals("List Item 1", tagElem.getText());
+
+        // Generic and most flexible locator methods
+        // By.cssSelector()
+        WebElement paraByCssId = driver.findElement(By.cssSelector("#para1"));
+        assertEquals("A paragraph of text", paraByCssId.getText());
+
+        // learn CSS Selectors to improve your ability to locate elements
+        // https://www.w3.org/TR/CSS21/selector.html
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors
+        // https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors
+        // https://www.w3schools.com/cssref/css_selectors.php
+
+        // By.xpath()
+        WebElement paraByXpathId = driver.findElement(By.xpath("//*[@id='para1']"));
+        assertEquals("A paragraph of text", paraByXpathId.getText());
+
+        // xpath can be useful, prefer CSS as it is
+        // more widely understood by web developers
+        // and more consistently implemented by browsers
+        // https://developer.mozilla.org/en-US/docs/Web/XPath
+        // https://www.w3schools.com/xml/xpath_syntax.asp
+
+        // Note: although we can use the static classes directly
+        // don't. Instead, use the factory methods above
+        WebElement byBy = driver.findElement(new By.ById("para1"));
+        assertEquals("A paragraph of text", byBy.getText());
     }
 
+    // interrogation of web elements get attribute etc.
     @Test
+    public void interrogationOfWebElements() {
+
+        // explore By. items
+        // find elements on the page using By locators
+        WebElement p1 = driver.findElement(By.id("para1"));
+
+        // we can get the attributes on an element
+        assertEquals("main", p1.getAttribute("class"));
+        assertEquals("para1", p1.getAttribute("id"));
+        assertEquals("para1", p1.getAttribute("data-locator"));
+
+        // get the text of a web element
+        assertEquals("A paragraph of text", p1.getText());
+
+        assertFalse(p1.isSelected(), "can't select a paragraph");
+        assertTrue(p1.isDisplayed());
+        assertTrue(p1.isEnabled(), "paragraphs are enabled");
+
+        assertEquals("p",p1.getTagName());
+
+        // there are a large number of WebElement 'get' interrogation methods,
+        // explore them
+
+    }
+
+        @Test
     public void canNavigateWithMultipleApproaches(){
 
         // using get
@@ -103,8 +186,6 @@ public class BasicWebDriverTest {
     @Test
     public void interactWithPageUsingWebElement() {
 
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
-
         WebElement inputField = driver.findElement(By.id("numentry"));
         inputField.sendKeys("12345");
 
@@ -119,8 +200,6 @@ public class BasicWebDriverTest {
     @Test
     public void clickALinkAndWebDriverWillAutomaticallyWait() {
 
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
-
         WebElement link = driver.findElement(By.id("clickable-link"));
         link.click();
 
@@ -133,8 +212,6 @@ public class BasicWebDriverTest {
 
     @Test
     public void webdriverCanHandleAlerts() {
-
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
 
         WebElement inputField = driver.findElement(By.id("numentry"));
         inputField.sendKeys("12345");
@@ -150,8 +227,6 @@ public class BasicWebDriverTest {
 
     @Test
     public void withDynamicPageUpdatesWeShouldWait() {
-
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
 
         WebElement inputField = driver.findElement(By.id("numentry"));
         inputField.sendKeys("123456");
