@@ -19,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MultiSelectAbstractionTest {
 
+    // WebDriver has an inbuilt support class called Select which
+    // can be used for Multi Select items and Drop Down Select items
+    // this class is a custom example of a multi select abstraction
     private WebDriver driver;
 
     @BeforeEach
