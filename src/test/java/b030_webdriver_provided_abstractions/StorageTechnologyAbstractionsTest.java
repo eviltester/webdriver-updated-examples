@@ -45,7 +45,7 @@ public class StorageTechnologyAbstractionsTest {
         driver.findElement(By.id("add-note")).click();
 
         assertEquals(1, storage.size());
-        String[] keys = storage.keySet().stream().toArray(String[]::new);
+        String[] keys = storage.keySet().toArray(String[]::new);
 
         // WebDriver uses Gson under the cover so we
         // can use this without adding any dependencies
@@ -64,7 +64,7 @@ public class StorageTechnologyAbstractionsTest {
         // very similar
 
         // configure the app to use session storage
-        driver.findElement(By.id("session-load-link")).click();
+        driver.findElement(By.id("session-storage-link")).click();
 
         // cast the driver to access the WebStorage interface
         WebStorage driverStorage = (WebStorage) driver;
@@ -81,7 +81,7 @@ public class StorageTechnologyAbstractionsTest {
         driver.findElement(By.id("add-note")).click();
 
         assertEquals(1, storage.size());
-        String[] keys = storage.keySet().stream().toArray(String[]::new);
+        String[] keys = storage.keySet().toArray(String[]::new);
 
         // WebDriver uses Gson under the cover so we
         // can use this without adding any dependencies
