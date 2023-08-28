@@ -1,5 +1,7 @@
 package b030_webdriver_provided_abstractions;
 
+import b020_infrastructure_abstractions.abstractions.Environment;
+import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +32,7 @@ public class BrowserTechnologyAbstractionsTest {
     @Test
     public void navigate(){
 
-       driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
+        driver.get(new SiteUrls(new Environment()).examplePage());
 
        WebElement heading = driver.findElement(By.tagName("h1"));
        assertEquals( "Example Page Heading One", heading.getText());

@@ -33,4 +33,20 @@ public class BasicJavaConceptsTest {
 
         assertEquals(17, calculator.getResult());
     }
+
+    @Test
+    public void refactorCommonStringsToConstants(){
+
+        // rather than repeating strings throughout our tests
+        // e.g. driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
+        // we refactor the Strings to constants in the test,
+        // and if they are used in many tests we refactor into a class that can be imported
+        // e.g. driver.get(BasicConstants.TEST_PAGE_URL);
+
+        assertEquals(
+                "https://testpages.eviltester.com/styled/webdriver-example-page",
+                BasicConstants.TEST_PAGE_URL
+        );
+
+    }
 }

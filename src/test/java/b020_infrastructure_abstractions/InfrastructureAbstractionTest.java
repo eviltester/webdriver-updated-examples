@@ -22,12 +22,12 @@ public class InfrastructureAbstractionTest {
     public void urlControlledByEnvironmentAbstraction(){
 
         Environment env = new Environment();
-        assertEquals("https://testpages.herokuapp.com",
+        assertEquals("https://testpages.eviltester.com",
                 env.getEnvRootUrlDomain());
     }
 
     @Test
-    public void systemPropertyToSetEnvironmentAbstraction(){
+    public void systemPropertyToSetDockerEnvironmentAbstraction(){
 
         System.setProperty("env", "docker");
         Environment env = new Environment();
@@ -36,11 +36,20 @@ public class InfrastructureAbstractionTest {
     }
 
     @Test
+    public void systemPropertyToSetHerokuEnvironmentAbstraction(){
+
+        System.setProperty("env", "heroku");
+        Environment env = new Environment();
+        assertEquals("https://testpages.herokuapp.com",
+                env.getEnvRootUrlDomain());
+    }
+
+    @Test
     public void siteAbstractionUsesEnvironment(){
 
         SiteUrls site = new SiteUrls(new Environment());
         assertEquals(
-                "https://testpages.herokuapp.com/styled/basic-html-form-test.html",
+                "https://testpages.eviltester.com/styled/basic-html-form-test.html",
                 site.htmlForm());
     }
 

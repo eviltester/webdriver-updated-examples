@@ -1,5 +1,7 @@
 package b030_webdriver_provided_abstractions;
 
+import b020_infrastructure_abstractions.abstractions.Environment;
+import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +23,7 @@ public class JavascriptTechnologyAbstractionsTest {
     @BeforeEach
     public void startBrowser(){
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/apps/notes/simplenotes.html");
+        driver.get(new SiteUrls(new Environment()).simpleNotesApp());
     }
 
     @Test

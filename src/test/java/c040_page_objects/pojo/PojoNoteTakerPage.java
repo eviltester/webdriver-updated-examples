@@ -46,8 +46,8 @@ public class PojoNoteTakerPage {
     }
 
     public void clickCancelButton(){
-        final WebElement addButton = driver.findElement(By.id("cancel-note"));
-        addButton.click();
+        final WebElement cancelButton = driver.findElement(By.id("cancel-note"));
+        cancelButton.click();
     }
 
     public void waitTillHaveCancelledEdit(){
@@ -63,18 +63,18 @@ public class PojoNoteTakerPage {
     }
 
     public void loadFromStorage(){
-        final WebElement addButton = driver.findElement(By.id("load-notes"));
-        addButton.click();
+        final WebElement loadButton = driver.findElement(By.id("load-notes"));
+        loadButton.click();
     }
 
     public void clickShowButton(){
-        final WebElement addButton = driver.findElement(By.id("show-notes"));
-        addButton.click();
+        final WebElement showButton = driver.findElement(By.id("show-notes"));
+        showButton.click();
     }
 
     public void clickClearAllButton(){
-        final WebElement addButton = driver.findElement(By.id("clear-notes"));
-        addButton.click();
+        final WebElement clearAllButton = driver.findElement(By.id("clear-notes"));
+        clearAllButton.click();
     }
 
     public List<String> getDisplayedNoteTitles(){

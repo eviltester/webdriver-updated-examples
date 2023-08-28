@@ -24,13 +24,13 @@ public class BasicWebDriverTest {
         // start browser before each test is slower than doing it once per test
         // but means we don't have to do as much clean up after the test
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
+        driver.get(BasicConstants.TEST_PAGE_URL);
     }
 
     @Test
     public void aBasicWebDriverTest() {
         // open a URL in the browser - we often just do this in the @BeforeAll or @BeforeEach
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
+        driver.get(BasicConstants.TEST_PAGE_URL);
 
         // find elements on the page using By locators
         WebElement p1 = driver.findElement(By.id("para1"));
@@ -47,7 +47,7 @@ public class BasicWebDriverTest {
 
         String currentUrl = driver.getCurrentUrl();
         assertEquals(
-            "https://testpages.herokuapp.com/styled/webdriver-example-page",
+                BasicConstants.TEST_PAGE_URL,
                 currentUrl);
 
         String pageSource = driver.getPageSource();
@@ -163,12 +163,12 @@ public class BasicWebDriverTest {
     public void canNavigateWithMultipleApproaches(){
 
         // using get
-        driver.get("https://testpages.herokuapp.com/styled/basic-web-page-test.html");
+        driver.get(BasicConstants.TEST_DOMAIN + "/styled/basic-web-page-test.html");
         assertEquals("Basic Web Page Example",
                 driver.findElement(By.tagName("h1")).getText());
 
         // or using navigate
-        driver.navigate().to("https://testpages.herokuapp.com/styled/webdriver-example-page");
+        driver.navigate().to(BasicConstants.TEST_DOMAIN + "/styled/webdriver-example-page");
         assertEquals("Example Page Heading One",
                 driver.findElement(By.tagName("h1")).getText());
 

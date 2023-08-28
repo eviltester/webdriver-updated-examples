@@ -27,7 +27,7 @@ public class HowAbstractionsHelpTest {
 
     @Test
     public void noAbstractions(){
-        driver.get("https://testpages.herokuapp.com/styled/apps/notes/simplenotes.html");
+        driver.get("https://testpages.eviltester.com/styled/apps/notes/simplenotes.html");
 
         final WebElement titleField =
                 driver.findElement(

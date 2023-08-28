@@ -34,7 +34,7 @@ public class CodeBeforeAbstractionsTest {
     @Test
     public void aTestWithNoAbstractions(){
 
-        driver.get("https://testpages.herokuapp.com/styled/apps/notes/simplenotes.html");
+        driver.get("https://testpages.eviltester.com/styled/apps/notes/simplenotes.html");
 
         String myNoteTitle = "My First Note";
 

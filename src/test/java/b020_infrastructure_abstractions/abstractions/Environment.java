@@ -11,7 +11,7 @@ public class Environment {
     public String getEnvRootUrlDomain(){
 
         // by default use the cloud heroku hosted
-        String env = "heroku";
+        String env = "official";
 
         // support changing using an environment variable
         if(System.getenv().containsKey(ABSTRACTIONS_ENV_VARIABLE_NAME)){
@@ -24,6 +24,7 @@ public class Environment {
         }
 
         Map<String, String> urls = new HashMap<>();
+        urls.put("official", "https://testpages.eviltester.com");
         urls.put("heroku", "https://testpages.herokuapp.com");
         urls.put("docker", "http://localhost:4567");
 

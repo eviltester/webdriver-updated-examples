@@ -17,7 +17,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class LocatorPageObjectsTest {
 
@@ -104,10 +107,17 @@ public class LocatorPageObjectsTest {
 
         String[] keys = storage.keySet().toArray(String[]::new);
 
+        // simple sort into date field order by adding to TreeMap
+        TreeMap<Double,Map<String,String>> sortedKeyMap = new TreeMap<>();
+
         for (String key : keys) {
             String storedValues = storage.getItem(key);
             Map noteValues = new Gson().fromJson(storedValues, Map.class);
-            listOfNoteDetails.add(noteValues);
+            sortedKeyMap.put((Double)noteValues.get("date"), noteValues);
+        }
+
+        for(Map<String,String>vals : sortedKeyMap.values()){
+            listOfNoteDetails.add(vals);
         }
 
         return listOfNoteDetails;

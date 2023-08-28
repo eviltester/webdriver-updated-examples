@@ -15,4 +15,12 @@ public class SiteUrls {
     public String simpleNotesApp() {
         return env.getEnvRootUrlDomain() + "/styled/apps/notes/simplenotes.html";
     }
+
+    public String examplePage() {
+        return env.getEnvRootUrlDomain() + "/styled/webdriver-example-page";
+    }
+
+    public String adminLoginExample() {
+        return env.getEnvRootUrlDomain() + "/styled/cookies/adminlogin.html";
+    }
 }

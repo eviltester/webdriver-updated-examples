@@ -28,7 +28,7 @@ public class BasicSyncTest {
         // start browser before each test is slower than doing it once per test
         // but means we don't have to do as much clean up after the test
         driver = new ChromeDriver();
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page");
+        driver.get(BasicConstants.TEST_PAGE_URL);
     }
 
     private void showAsParaWithInputText(final String inputText) {
@@ -48,7 +48,7 @@ public class BasicSyncTest {
         // that are ready at page load. WebDriver automatically
         // waits for the page load.
 
-        driver.get("https://testpages.herokuapp.com/styled/webdriver-example-page?number-entry=1234");
+        driver.get(BasicConstants.TEST_PAGE_URL + "?number-entry=1234");
         WebElement elem = driver.findElement(By.id("message"));
         assertEquals("one, two, three, four", elem.getText());
 

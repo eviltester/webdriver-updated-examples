@@ -52,13 +52,13 @@ public class StructuralNoteTakerPage {
     }
 
     public void clickAddButton() {
-        final WebElement link = driver.findElement(By.id("add-note"));
-        link.click();
+        final WebElement button = driver.findElement(By.id("add-note"));
+        button.click();
     }
 
     public void clickCancelButton() {
-        final WebElement link = driver.findElement(By.id("cancel-note"));
-        link.click();
+        final WebElement button = driver.findElement(By.id("cancel-note"));
+        button.click();
     }
 
     public List<String> getDisplayedNoteTitles(){

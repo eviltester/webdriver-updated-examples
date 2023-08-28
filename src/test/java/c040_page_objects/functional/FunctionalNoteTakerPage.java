@@ -54,8 +54,8 @@ public class FunctionalNoteTakerPage {
 
 
     public void cancelEdit() {
-        final WebElement addButton = driver.findElement(By.id("cancel-note"));
-        addButton.click();
+        final WebElement cancelButton = driver.findElement(By.id("cancel-note"));
+        cancelButton.click();
     }
 
     public void waitForState(String aState){
@@ -72,18 +72,18 @@ public class FunctionalNoteTakerPage {
 
 
     public void loadFromStorage(){
-        final WebElement addButton = driver.findElement(By.id("load-notes"));
-        addButton.click();
+        final WebElement loadButton = driver.findElement(By.id("load-notes"));
+        loadButton.click();
     }
 
     public void showStoredNotes(){
-        final WebElement addButton = driver.findElement(By.id("show-notes"));
-        addButton.click();
+        final WebElement showButton = driver.findElement(By.id("show-notes"));
+        showButton.click();
     }
 
     public void clearStoredNotes(){
-        final WebElement addButton = driver.findElement(By.id("clear-notes"));
-        addButton.click();
+        final WebElement clearAllButton = driver.findElement(By.id("clear-notes"));
+        clearAllButton.click();
 
         driver.switchTo().alert().accept();
     }

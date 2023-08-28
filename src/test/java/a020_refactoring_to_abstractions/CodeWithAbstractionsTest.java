@@ -28,7 +28,7 @@ public class CodeWithAbstractionsTest {
     @Test
     public void aTestWithLocalMethodReadableAbstractions(){
 
-        driver.get("https://testpages.herokuapp.com/styled/apps/notes/simplenotes.html");
+        driver.get("https://testpages.eviltester.com/styled/apps/notes/simplenotes.html");
 
         String myNoteTitle = "My First Note";
         String myNoteDetails = "My Actual Note\nspans multiple lines";
