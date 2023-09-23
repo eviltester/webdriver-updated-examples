@@ -1,12 +1,12 @@
-package d010_navigation.tightcoupling.abstractions;
+package d010_navigation.loosecoupling.abstractions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoggedInPage {
+public class AdminViewPage {
     private final WebDriver driver;
 
-    public LoggedInPage(final WebDriver driver) {
+    public AdminViewPage(final WebDriver driver) {
         this.driver = driver;
     }
 

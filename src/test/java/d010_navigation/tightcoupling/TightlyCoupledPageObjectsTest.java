@@ -11,6 +11,7 @@ import b020_infrastructure_abstractions.abstractions.Environment;
 import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import d010_navigation.tightcoupling.abstractions.AdminLoginPage;
 import d010_navigation.tightcoupling.abstractions.LoggedInPage;
+import d010_navigation.tightcoupling.abstractions.SuperAdminLoggedInPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -66,6 +67,39 @@ public class TightlyCoupledPageObjectsTest {
         assertEquals("Super Admin View",
                 driver.findElement(By.tagName("h1")).getText());
     }
+
+    @Test
+    public void canLeadToMultipleLoginMethodsAsSuperAdmin(){
+
+        final AdminLoginPage loginPage = new AdminLoginPage(driver);
+        final SuperAdminLoggedInPage adminPage =
+                loginPage.loginAsSuperAdmin("SuperAdmin", "AdminPass");
+
+        assertEquals("Super Admin View", adminPage.getH1Text());
+    }
+
+    @Test
+    public void canLeadToMultipleLoginMethodsAsAdmin(){
+
+        final AdminLoginPage loginPage = new AdminLoginPage(driver);
+        final LoggedInPage adminPage =
+                loginPage.loginAsAdmin("Admin", "AdminPass");
+
+        assertEquals("Admin View", adminPage.getH1Text());
+    }
+
+    @Test
+    public void canLeadToMultipleLoginMethodsAsInvalid(){
+
+        final AdminLoginPage loginPage = new AdminLoginPage(driver);
+        loginPage.failToLogin("Admin", "InvalidPassword");
+
+        assertEquals("Cookie Controlled Admin", loginPage.getH1Text());
+
+        assertEquals("Login Details Incorrect",
+                driver.findElement(By.cssSelector(".loginmessage")).getText());
+    }
+
 
     @AfterEach
     public void closeBrowser(){
