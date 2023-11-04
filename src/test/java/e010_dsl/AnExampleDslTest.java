@@ -46,6 +46,7 @@ public class AnExampleDslTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 
 }

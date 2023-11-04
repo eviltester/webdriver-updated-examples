@@ -251,5 +251,6 @@ public class BasicWebDriverTest {
     public void closeBrowser(){
         // remember to close the browser
         driver.close();
+        driver.quit();
     }
 }

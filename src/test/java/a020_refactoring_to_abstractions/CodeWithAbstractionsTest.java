@@ -83,5 +83,6 @@ public class CodeWithAbstractionsTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

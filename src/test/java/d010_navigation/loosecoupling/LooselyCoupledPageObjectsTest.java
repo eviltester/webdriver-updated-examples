@@ -131,5 +131,6 @@ public class LooselyCoupledPageObjectsTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

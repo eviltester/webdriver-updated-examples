@@ -107,5 +107,6 @@ public class FileUploadAbstractionTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

@@ -86,5 +86,6 @@ public class FunctionalPageObjectTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

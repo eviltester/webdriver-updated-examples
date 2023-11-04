@@ -88,5 +88,6 @@ public class CombiningPageObjectsTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

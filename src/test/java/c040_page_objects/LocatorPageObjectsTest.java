@@ -128,5 +128,6 @@ public class LocatorPageObjectsTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

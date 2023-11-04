@@ -77,5 +77,6 @@ public class JavascriptTechnologyAbstractionsTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

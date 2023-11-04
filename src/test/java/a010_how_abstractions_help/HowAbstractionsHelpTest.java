@@ -114,5 +114,6 @@ public class HowAbstractionsHelpTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }

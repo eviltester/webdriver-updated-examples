@@ -158,5 +158,6 @@ public class BasicSyncTest {
     public void closeBrowser(){
         // remember to close the browser
         driver.close();
+        driver.quit();
     }
 }

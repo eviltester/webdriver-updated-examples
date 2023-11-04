@@ -102,5 +102,6 @@ public class MultiSelectAbstractionTest {
     @AfterEach
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
 }
