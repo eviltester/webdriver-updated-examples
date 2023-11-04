@@ -1,5 +1,6 @@
 package e010_dsl;
 
+import a005_basic_webdriver_and_junit.Driver;
 import e010_dsl.abstractions.SimpleNotesAppEntry;
 import e010_dsl.abstractions.SimpleNotesAppPage;
 import e010_dsl.abstractions.SimpleNotesAppUser;
@@ -17,7 +18,8 @@ public class AnExampleDslTest {
 
     @BeforeEach
     public void startBrowser(){
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
     }
 
     @Test

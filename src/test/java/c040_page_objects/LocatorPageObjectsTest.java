@@ -1,5 +1,6 @@
 package c040_page_objects;
 
+import a005_basic_webdriver_and_junit.Driver;
 import b020_infrastructure_abstractions.abstractions.Environment;
 import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import c040_page_objects.locators.LocatorNoteTakerPage;
@@ -38,7 +39,8 @@ public class LocatorPageObjectsTest {
 
     @BeforeEach
     public void startBrowser(){
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
         driver.get(new SiteUrls(new Environment()).simpleNotesApp());
     }
 

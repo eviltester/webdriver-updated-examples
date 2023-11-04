@@ -1,5 +1,6 @@
 package a010_how_abstractions_help;
 
+import a005_basic_webdriver_and_junit.Driver;
 import a010_how_abstractions_help.abstractions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,7 +22,8 @@ public class HowAbstractionsHelpTest {
 
     @BeforeEach
     public void startBrowser(){
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
     }
 
     @Test

@@ -7,6 +7,7 @@ and action on one page object returns another page object.
 
  */
 
+import a005_basic_webdriver_and_junit.Driver;
 import b020_infrastructure_abstractions.abstractions.Environment;
 import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import d010_navigation.tightcoupling.abstractions.AdminLoginPage;
@@ -29,7 +30,8 @@ public class TightlyCoupledPageObjectsTest {
 
     @BeforeEach
     public void startBrowser(){
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
         driver.get(new SiteUrls(new Environment()).adminLoginExample());
     }
 

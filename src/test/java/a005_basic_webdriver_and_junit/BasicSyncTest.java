@@ -27,7 +27,8 @@ public class BasicSyncTest {
     public void startBrowser(){
         // start browser before each test is slower than doing it once per test
         // but means we don't have to do as much clean up after the test
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
         driver.get(BasicConstants.TEST_PAGE_URL);
     }
 

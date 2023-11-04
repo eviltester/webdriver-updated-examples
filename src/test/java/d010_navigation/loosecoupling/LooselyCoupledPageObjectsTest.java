@@ -7,6 +7,7 @@ in the @Test, don't delegate it to a Page Object.
 
  */
 
+import a005_basic_webdriver_and_junit.Driver;
 import b020_infrastructure_abstractions.abstractions.Environment;
 import b020_infrastructure_abstractions.abstractions.SiteUrls;
 import d010_navigation.loosecoupling.abstractions.AdminViewPage;
@@ -36,7 +37,8 @@ public class LooselyCoupledPageObjectsTest {
 
     @BeforeEach
     public void startBrowser(){
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
         driver.get(new SiteUrls(new Environment()).adminLoginExample());
     }
 

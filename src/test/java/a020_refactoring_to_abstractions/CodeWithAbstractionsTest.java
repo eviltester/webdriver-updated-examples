@@ -1,5 +1,6 @@
 package a020_refactoring_to_abstractions;
 
+import a005_basic_webdriver_and_junit.Driver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,8 @@ public class CodeWithAbstractionsTest {
 
     @BeforeEach
     public void startBrowser(){
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
+        driver = Driver.create();
     }
 
     @Test
