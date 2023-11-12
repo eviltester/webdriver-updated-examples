@@ -74,6 +74,7 @@ public class HowAbstractionsHelpTest {
                         NotesPage.NOTES_LIST_ITEM).getText().trim());
     }
 
+
     @Test
     public void canCreateANote(){
 
