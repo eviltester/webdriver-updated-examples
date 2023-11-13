@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -33,10 +32,11 @@ public class CodeWithAbstractionsTest {
         driver.get("https://testpages.eviltester.com/styled/apps/notes/simplenotes.html");
 
         String myNoteTitle = "My First Note";
-        String myNoteDetails = "My Actual Note\nspans multiple lines";
-
         enterNoteTitle(myNoteTitle);
+
+        String myNoteDetails = "My Actual Note\nspans multiple lines";
         enterNoteDetails(myNoteDetails);
+
         clickAddNote();
 
         final List<WebElement> listItems = getNoteTitles();
