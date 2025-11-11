@@ -33,15 +33,15 @@ public class DomTechnologyAbstractionsTest {
     @Test
     public void basicDOMAbstractions(){
 
-        // find elements on the page using By locators
-        List<WebElement> elems = driver.findElements(By.className("example-list-item"));
+        // find elements on the page using By locators all paras with ids
+        List<WebElement> elems = driver.findElements(By.cssSelector("p[id]"));
 
-        assertEquals(3, elems.size(), "There should be 3 list items");
+        assertEquals(3, elems.size(), "There should be 3 paras items");
 
         // check list item details
-        assertEquals("List Item 1", elems.get(0).getText());
-        assertEquals("li2", elems.get(1).getAttribute("data-locator"));
-        assertEquals("List Item 3", elems.get(2).getText());
+        assertEquals("A paragraph of text", elems.get(0).getText());
+        assertEquals("Another paragraph of text", elems.get(1).getText());
+        assertEquals("click-message", elems.get(2).getAttribute("id"));
     }
 
 

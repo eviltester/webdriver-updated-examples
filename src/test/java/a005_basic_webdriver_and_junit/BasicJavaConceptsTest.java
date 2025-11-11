@@ -44,7 +44,7 @@ public class BasicJavaConceptsTest {
         // e.g. driver.get(BasicConstants.TEST_PAGE_URL);
 
         assertEquals(
-                "https://testpages.eviltester.com/styled/webdriver-example-page",
+                "https://testpages.eviltester.com/pages/basics/basic-web-page/",
                 BasicConstants.TEST_PAGE_URL
         );
 

@@ -37,7 +37,7 @@ public class BrowserTechnologyAbstractionsTest {
         driver.get(new SiteUrls(new Environment()).examplePage());
 
        WebElement heading = driver.findElement(By.tagName("h1"));
-       assertEquals( "Example Page Heading One", heading.getText());
+       assertEquals( "Basic Web Page", heading.getText());
     }
 
     @AfterEach

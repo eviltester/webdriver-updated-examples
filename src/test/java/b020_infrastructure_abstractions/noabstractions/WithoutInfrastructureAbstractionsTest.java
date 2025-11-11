@@ -25,7 +25,7 @@ public class WithoutInfrastructureAbstractionsTest {
     public void adminLoginButtonHasExpectedText(){
 
         //String env = ""http://localhost:4567/styled/cookies/adminlogin.html";
-        String env = "https://testpages.eviltester.com/styled/cookies/adminlogin.html";
+        String env = "https://testpages.eviltester.com/apps/simulated-login/";
         driver.get(env);
 
         WebElement loginButton = driver.findElement(By.id("login"));

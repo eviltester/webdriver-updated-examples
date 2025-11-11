@@ -15,8 +15,8 @@
         <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
         <maven.surefire.plugin>2.22.2</maven.surefire.plugin>
         <maven.failsafe.plugin>${maven.surefire.plugin}</maven.failsafe.plugin>
-        <junit.jupiter.version>5.10.0</junit.jupiter.version>
-        <selenium.java>4.11.0</selenium.java>
+        <junit.jupiter.version>5.14.0</junit.jupiter.version>
+        <selenium.java>4.38.0</selenium.java>
         <!-- https://bonigarcia.dev/selenium-jupiter/ -->
         <selenium.jupiter>4.3.6</selenium.jupiter>
         <!-- https://cucumber.io/docs/installation/java/ -->
@@ -26,24 +26,7 @@
     </properties>
 
     <dependencies>
-        <!--
 
-            WebDriver Manager
-
-            https://github.com/bonigarcia/webdrivermanager
-
-            Make sure an up to date version of WebDriverManager
-            is used if you receive an error about ChromeDriver not being
-            able to handle the version of Chrome on your machine
-            "This version of ChromeDriver only supports ..."
-        -->
-
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-            <scope>test</scope>
-        </dependency>
 
         <!--
             Selenium WebDriver dependency
@@ -64,29 +47,17 @@
         -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
+            <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!--
-            JUnit 5 annotations to configure drivers
-
-            https://github.com/bonigarcia/selenium-jupiter
-        -->
         <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>selenium-jupiter</artifactId>
-            <version>${selenium.jupiter}</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
             <scope>test</scope>
         </dependency>
-
 
         <!--
             https://cucumber.io
@@ -105,6 +76,7 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
+            <scope>test</scope>
         </dependency>
 
 

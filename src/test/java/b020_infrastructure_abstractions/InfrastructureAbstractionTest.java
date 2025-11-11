@@ -49,7 +49,7 @@ public class InfrastructureAbstractionTest {
 
         SiteUrls site = new SiteUrls(new Environment());
         assertEquals(
-                "https://testpages.eviltester.com/styled/basic-html-form-test.html",
+                "https://testpages.eviltester.com/pages/forms/html-form/",
                 site.htmlForm());
     }
 
@@ -59,7 +59,7 @@ public class InfrastructureAbstractionTest {
         System.setProperty("env", "docker");
         SiteUrls site = new SiteUrls(new Environment());
         assertEquals(
-                "http://localhost:4567/styled/basic-html-form-test.html",
+                "http://localhost:4567/pages/forms/html-form/",
                 site.htmlForm());
     }
 

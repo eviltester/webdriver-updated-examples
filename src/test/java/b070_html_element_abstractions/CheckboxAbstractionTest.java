@@ -30,9 +30,11 @@ public class CheckboxAbstractionTest {
     @Test
     public void canInteractWithACheckBoxAsWebElement(){
 
+        final WebElement form = driver.findElement(By.id("HTMLFormElements"));
+
         final By checkboxes = By.cssSelector("input[type='checkbox']");
 
-        final WebElement aCheckbox = driver.findElement(checkboxes);
+        final WebElement aCheckbox = form.findElement(checkboxes);
 
         assertFalse(aCheckbox.isSelected());
 
@@ -49,9 +51,11 @@ public class CheckboxAbstractionTest {
     @Test
     public void canInteractWithACheckBoxSemantically(){
 
+        final WebElement form = driver.findElement(By.id("HTMLFormElements"));
+
         final By checkboxes = By.cssSelector("input[type='checkbox']");
 
-        final WebElement aCheckbox = driver.findElement(checkboxes);
+        final WebElement aCheckbox = form.findElement(checkboxes);
 
         final HtmlCheckbox checkbox = new HtmlCheckbox(aCheckbox);
 
@@ -74,9 +78,11 @@ public class CheckboxAbstractionTest {
     @Test
     public void canInteractWithCheckBoxSemantics(){
 
+        final WebElement form = driver.findElement(By.id("HTMLFormElements"));
+
         final By checkboxes = By.cssSelector("input[type='checkbox']");
 
-        final List<WebElement> theCheckboxElements = driver.findElements(checkboxes);
+        final List<WebElement> theCheckboxElements = form.findElements(checkboxes);
 
         HtmlCheckbox checkbox1 = new HtmlCheckbox(theCheckboxElements.get(0));
         HtmlCheckbox checkbox2 = new HtmlCheckbox(theCheckboxElements.get(1));

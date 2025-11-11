@@ -9,18 +9,18 @@ public class SiteUrls {
     }
 
     public String htmlForm(){
-        return env.getEnvRootUrlDomain() + "/styled/basic-html-form-test.html";
+        return env.getEnvRootUrlDomain() + "/pages/forms/html-form/";
     }
 
     public String simpleNotesApp() {
-        return env.getEnvRootUrlDomain() + "/styled/apps/notes/simplenotes.html";
+        return env.getEnvRootUrlDomain() + "/apps/note-taker/";
     }
 
     public String examplePage() {
-        return env.getEnvRootUrlDomain() + "/styled/webdriver-example-page";
+        return env.getEnvRootUrlDomain() + "/pages/basics/basic-web-page/";
     }
 
     public String adminLoginExample() {
-        return env.getEnvRootUrlDomain() + "/styled/cookies/adminlogin.html";
+        return env.getEnvRootUrlDomain() + "/apps/simulated-login/";
     }
 }

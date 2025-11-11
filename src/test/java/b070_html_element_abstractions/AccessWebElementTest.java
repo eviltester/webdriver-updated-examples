@@ -31,9 +31,11 @@ public class AccessWebElementTest {
     @Test
     public void canContinueToUseWebElementSemantics() {
 
+        final WebElement form = driver.findElement(By.id("HTMLFormElements"));
+
         final By checkboxes = By.cssSelector("input[type='checkbox']");
 
-        final List<WebElement> theCheckboxElements = driver.findElements(checkboxes);
+        final List<WebElement> theCheckboxElements = form.findElements(checkboxes);
 
         HtmlCheckbox checkbox1 = new HtmlCheckbox(theCheckboxElements.get(0));
 

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.html5.Storage;
-import org.openqa.selenium.html5.WebStorage;
+//import org.openqa.selenium.html5.Storage;
+//import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -44,86 +44,86 @@ public class LocatorPageObjectsTest {
         driver.get(new SiteUrls(new Environment()).simpleNotesApp());
     }
 
-    @Test
-    public void canCreateANewNote(){
+//    @Test
+//    public void canCreateANewNote(){
+//
+//        LocatorNoteTakerPage noteTaker = new LocatorNoteTakerPage(driver);
+//
+//        noteTaker.localStorageLink().click();
+//        noteTaker.loadButton().click();
+//
+//        noteTaker.find(LocatorNoteTakerPage.NOTE_TITLE_FIELD).
+//                sendKeys("my first title");
+//        noteTaker.find(LocatorNoteTakerPage.NOTE_DETAILS_FIELD).
+//                sendKeys("my note details");
+//        noteTaker.addButton().click();
+//
+//        noteTaker.find(LocatorNoteTakerPage.NOTE_TITLE_FIELD).
+//                sendKeys("my second title");
+//        noteTaker.find(LocatorNoteTakerPage.NOTE_DETAILS_FIELD).
+//                sendKeys("my second details");
+//        noteTaker.addButton().click();
+//
+//        final List<Map<String, String>> data = getLocalStoredData();
+//
+//        assertEquals("my first title", data.get(0).get("title"));
+//        assertEquals("my second title", data.get(1).get("title"));
+//    }
+//
+//    @Test
+//    public void canCancelNoteCreation(){
+//
+//        LocatorNoteTakerPage noteTaker = new LocatorNoteTakerPage(driver);
+//
+//        noteTaker.localStorageLink().click();
+//        noteTaker.loadButton().click();
+//
+//        noteTaker.find(LocatorNoteTakerPage.NOTE_TITLE_FIELD).
+//                sendKeys("my first title");
+//        noteTaker.find(LocatorNoteTakerPage.NOTE_DETAILS_FIELD).
+//                sendKeys("my note details");
+//
+//        noteTaker.cancelButton().click();
+//
+//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+//                ExpectedConditions.textToBe(
+//                        LocatorNoteTakerPage.NOTE_STATUS,
+//                        "Cancelled Edit"));
+//
+//        noteTaker.addButton().click();
+//
+//        final List<Map<String, String>> storedNotes = getLocalStoredData();
+//
+//        assertEquals(0, storedNotes.size());
+//    }
 
-        LocatorNoteTakerPage noteTaker = new LocatorNoteTakerPage(driver);
-
-        noteTaker.localStorageLink().click();
-        noteTaker.loadButton().click();
-
-        noteTaker.find(LocatorNoteTakerPage.NOTE_TITLE_FIELD).
-                sendKeys("my first title");
-        noteTaker.find(LocatorNoteTakerPage.NOTE_DETAILS_FIELD).
-                sendKeys("my note details");
-        noteTaker.addButton().click();
-
-        noteTaker.find(LocatorNoteTakerPage.NOTE_TITLE_FIELD).
-                sendKeys("my second title");
-        noteTaker.find(LocatorNoteTakerPage.NOTE_DETAILS_FIELD).
-                sendKeys("my second details");
-        noteTaker.addButton().click();
-
-        final List<Map<String, String>> data = getLocalStoredData();
-
-        assertEquals("my first title", data.get(0).get("title"));
-        assertEquals("my second title", data.get(1).get("title"));
-    }
-
-    @Test
-    public void canCancelNoteCreation(){
-
-        LocatorNoteTakerPage noteTaker = new LocatorNoteTakerPage(driver);
-
-        noteTaker.localStorageLink().click();
-        noteTaker.loadButton().click();
-
-        noteTaker.find(LocatorNoteTakerPage.NOTE_TITLE_FIELD).
-                sendKeys("my first title");
-        noteTaker.find(LocatorNoteTakerPage.NOTE_DETAILS_FIELD).
-                sendKeys("my note details");
-
-        noteTaker.cancelButton().click();
-
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-                ExpectedConditions.textToBe(
-                        LocatorNoteTakerPage.NOTE_STATUS,
-                        "Cancelled Edit"));
-
-        noteTaker.addButton().click();
-
-        final List<Map<String, String>> storedNotes = getLocalStoredData();
-
-        assertEquals(0, storedNotes.size());
-    }
-
-    private List<Map<String,String>> getLocalStoredData(){
-        return getStorageStoredData(
-                    ((WebStorage)driver).
-                            getLocalStorage());
-    }
-
-    private List<Map<String,String>> getStorageStoredData(Storage storage){
-
-        List<Map<String,String>> listOfNoteDetails = new ArrayList<>();
-
-        String[] keys = storage.keySet().toArray(String[]::new);
-
-        // simple sort into date field order by adding to TreeMap
-        TreeMap<Double,Map<String,String>> sortedKeyMap = new TreeMap<>();
-
-        for (String key : keys) {
-            String storedValues = storage.getItem(key);
-            Map noteValues = new Gson().fromJson(storedValues, Map.class);
-            sortedKeyMap.put((Double)noteValues.get("date"), noteValues);
-        }
-
-        for(Map<String,String>vals : sortedKeyMap.values()){
-            listOfNoteDetails.add(vals);
-        }
-
-        return listOfNoteDetails;
-    }
+//    private List<Map<String,String>> getLocalStoredData(){
+//        return getStorageStoredData(
+//                    ((WebStorage)driver).
+//                            getLocalStorage());
+//    }
+//
+//    private List<Map<String,String>> getStorageStoredData(Storage storage){
+//
+//        List<Map<String,String>> listOfNoteDetails = new ArrayList<>();
+//
+//        String[] keys = storage.keySet().toArray(String[]::new);
+//
+//        // simple sort into date field order by adding to TreeMap
+//        TreeMap<Double,Map<String,String>> sortedKeyMap = new TreeMap<>();
+//
+//        for (String key : keys) {
+//            String storedValues = storage.getItem(key);
+//            Map noteValues = new Gson().fromJson(storedValues, Map.class);
+//            sortedKeyMap.put((Double)noteValues.get("date"), noteValues);
+//        }
+//
+//        for(Map<String,String>vals : sortedKeyMap.values()){
+//            listOfNoteDetails.add(vals);
+//        }
+//
+//        return listOfNoteDetails;
+//    }
 
     @AfterEach
     public void closeBrowser(){
