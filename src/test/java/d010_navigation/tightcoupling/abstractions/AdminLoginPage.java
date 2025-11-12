@@ -56,7 +56,4 @@ public class AdminLoginPage {
         return driver.findElement(By.id("loginh")).getText();
     }
 
-    public String getLoginErrorMessage() {
-        return driver.findElement(By.cssSelector(".loginmessage")).getText();
-    }
 }

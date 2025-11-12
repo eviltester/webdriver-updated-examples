@@ -24,6 +24,9 @@ public class BasicWebDriverInteractionsTest {
         // driver = new ChromeDriver();
         driver = Driver.create();
         driver.get(BasicConstants.TEST_DOMAIN + "/apps/numbers-to-text/");
+
+        // NOTE: it would be even faster if we put Driver.create in a BeforeAll,
+        // and just .get(the page) for each test to reset the state of the application
     }
 
     @Test
