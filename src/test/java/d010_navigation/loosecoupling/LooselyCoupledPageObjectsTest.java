@@ -48,7 +48,7 @@ public class LooselyCoupledPageObjectsTest {
         loginPage.login("Admin", "AdminPass");
 
         final AdminViewPage adminView = new AdminViewPage(driver);
-        assertEquals("Admin View", adminView.getH1Text());
+        assertEquals("You are Admin", adminView.getHeadingText());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class LooselyCoupledPageObjectsTest {
         final AdminLoginPage loginPage = new AdminLoginPage(driver);
         loginPage.login("Admin", "Admin");
 
-        assertEquals("Cookie Controlled Admin", loginPage.getH1Text());
+        assertEquals("You can login", loginPage.getHeadingText());
 
         assertEquals("Login Details Incorrect",
                 loginPage.getLoginErrorMessage());
@@ -69,7 +69,7 @@ public class LooselyCoupledPageObjectsTest {
         loginPage.login("SuperAdmin", "AdminPass");
 
         final SuperAdminViewPage loggedInPage = new SuperAdminViewPage(driver);
-        assertEquals("Super Admin View", loggedInPage.getH1Text());
+        assertEquals("You are Super Admin", loggedInPage.getHeadingText());
     }
 
     // common Navigation Actions Can Be Elevated and delegated to another class
@@ -92,12 +92,12 @@ public class LooselyCoupledPageObjectsTest {
 
         // we can log out
         final SuperAdminViewPage loggedInPage = new SuperAdminViewPage(driver);
-        assertEquals("Super Admin View", loggedInPage.getH1Text());
+        assertEquals("You are Super Admin", loggedInPage.getHeadingText());
 
         assertTrue(nav.isLogoutEnabled());
 
         nav.logout();
-        assertEquals("Cookie Controlled Admin", loginPage.getH1Text());
+        assertEquals("You can login", loginPage.getHeadingText());
     }
 
     // could create a navigation class
@@ -108,7 +108,7 @@ public class LooselyCoupledPageObjectsTest {
         jumpTo.loginPage();
 
         final AdminLoginPage loginPage = new AdminLoginPage(driver);
-        assertEquals("Cookie Controlled Admin", loginPage.getH1Text());
+        assertEquals("You can login", loginPage.getHeadingText());
     }
 
     @Test
@@ -121,11 +121,11 @@ public class LooselyCoupledPageObjectsTest {
         loginPage.login("SuperAdmin", "AdminPass");
 
         final SuperAdminViewPage loggedInPage = new SuperAdminViewPage(driver);
-        assertEquals("Super Admin View", loggedInPage.getH1Text());
+        assertEquals("You are Super Admin", loggedInPage.getHeadingText());
 
         jumpTo.loginPage(); // will redirect back to super admin view page
 
-        assertEquals("Super Admin View", loggedInPage.getH1Text());
+        assertEquals("You are Super Admin", loggedInPage.getHeadingText());
     }
 
     @AfterEach

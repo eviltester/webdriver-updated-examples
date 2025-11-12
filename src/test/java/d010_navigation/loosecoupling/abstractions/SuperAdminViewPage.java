@@ -10,7 +10,7 @@ public class SuperAdminViewPage {
         this.driver = driver;
     }
 
-    public String getH1Text() {
-        return driver.findElement(By.id("superadminh1")).getText();
+    public String getHeadingText() {
+        return driver.findElement(By.id("superadminh")).getText();
     }
 }

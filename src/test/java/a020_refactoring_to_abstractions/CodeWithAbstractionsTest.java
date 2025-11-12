@@ -29,7 +29,8 @@ public class CodeWithAbstractionsTest {
     @Test
     public void aTestWithLocalMethodReadableAbstractions(){
 
-        driver.get("https://testpages.eviltester.com/styled/apps/notes/simplenotes.html");
+        //driver.get("http://localhost:4567/apps/note-taker/");
+        driver.get("https://testpages.eviltester.com/apps/note-taker/");
 
         String myNoteTitle = "My First Note";
         enterNoteTitle(myNoteTitle);

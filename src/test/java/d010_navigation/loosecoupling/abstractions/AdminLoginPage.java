@@ -18,7 +18,7 @@ public class AdminLoginPage {
         driver.findElement(By.id("login")).click();
     }
 
-    public String getH1Text() {
-        return driver.findElement(By.id("loginh1")).getText();
+    public String getHeadingText() {
+        return driver.findElement(By.id("loginh")).getText();
     }
 }

@@ -41,7 +41,8 @@ public class TightlyCoupledPageObjectsTest {
         final LoggedInPage adminPage =
                 loginPage.login("Admin", "AdminPass");
 
-        assertEquals("Admin View", adminPage.getH1Text());
+
+        assertEquals("You are Admin", adminPage.getHeadingText());
     }
 
     @Test
@@ -49,7 +50,7 @@ public class TightlyCoupledPageObjectsTest {
         final AdminLoginPage loginPage = new AdminLoginPage(driver);
         loginPage.login("Admin", "Admin");
 
-        assertEquals("Cookie Controlled Admin",
+        assertEquals("Cookie Controlled Login",
                 driver.findElement(By.tagName("h1")).getText());
     }
 
@@ -61,7 +62,7 @@ public class TightlyCoupledPageObjectsTest {
 
         assertThrows(
                 NoSuchElementException.class,
-                () -> assertEquals("Admin View", adminPage.getH1Text()),
+                () -> assertEquals("You are Admin", adminPage.getHeadingText()),
                 "We should have logged in to the SuperAdminView Page");
 
         // we are actually on the super admin page so the
@@ -77,7 +78,7 @@ public class TightlyCoupledPageObjectsTest {
         final SuperAdminLoggedInPage adminPage =
                 loginPage.loginAsSuperAdmin("SuperAdmin", "AdminPass");
 
-        assertEquals("Super Admin View", adminPage.getH1Text());
+        assertEquals("You are Super Admin", adminPage.getHeadingText());
     }
 
     @Test
@@ -87,7 +88,7 @@ public class TightlyCoupledPageObjectsTest {
         final LoggedInPage adminPage =
                 loginPage.loginAsAdmin("Admin", "AdminPass");
 
-        assertEquals("Admin View", adminPage.getH1Text());
+        assertEquals("You are Admin", adminPage.getHeadingText());
     }
 
     @Test
@@ -96,7 +97,7 @@ public class TightlyCoupledPageObjectsTest {
         final AdminLoginPage loginPage = new AdminLoginPage(driver);
         loginPage.failToLogin("Admin", "InvalidPassword");
 
-        assertEquals("Cookie Controlled Admin", loginPage.getH1Text());
+        assertEquals("You can login", loginPage.getHeadingText());
 
         assertEquals("Login Details Incorrect",
                 driver.findElement(By.cssSelector(".loginmessage")).getText());

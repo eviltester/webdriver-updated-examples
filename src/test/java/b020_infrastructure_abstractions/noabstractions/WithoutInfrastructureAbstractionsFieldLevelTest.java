@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class WithoutInfrastructureAbstractionsFieldLevelTest {
 
     //private String env = ""http://localhost:4567/styled/cookies/adminlogin.html";
-    private String env = "https://testpages.eviltester.com/styled/cookies/adminlogin.html";
+    private String env = "https://testpages.eviltester.com/apps/simulated-login/";
 
     private WebDriver driver;
 

@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -99,7 +100,9 @@ public class FileUploadAbstractionTest {
 
         fileInput.chooseFile(file);
 
-        driver.findElement(By.cssSelector("input[type='submit']")).click();
+        WebElement submit = driver.findElement(By.cssSelector("input[type='submit']"));
+        //new Actions(driver).moveToElement(submit).perform();
+        submit.submit();
         assertEquals("textfile.txt",driver.findElement(By.id("_valuefilename")).getText());
 
     }

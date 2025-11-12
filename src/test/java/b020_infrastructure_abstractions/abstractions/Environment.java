@@ -12,6 +12,7 @@ public class Environment {
 
         // by default use the cloud heroku hosted
         String env = "official";
+        //String env = "docker"; // localhost:4567
 
         // support changing using an environment variable
         if(System.getenv().containsKey(ABSTRACTIONS_ENV_VARIABLE_NAME)){
